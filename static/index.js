@@ -10,6 +10,7 @@ var $clearBtn = document.querySelector("#clear");
 var $btnload = document.querySelector("#nextData");
 var $btnprev = document.querySelector("#prevData");
 var $page = document.querySelector("#pages");
+var $btnadd = document.querySelector("#add");
 //var total = dataSet.length;
 var count = 0;
 var data = dataSet;
@@ -18,6 +19,25 @@ var resultPerPage=100;
 function capitalize(str) {
   if(str instanceof String || typeof str === 'string')
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
+function handleAddButtonClick() {
+
+  var filterDate = $dateInput.value.trim();
+  var filterCity = $cityInput.value.trim();
+  var filterState = $stateInput.value.trim();
+  var filterCountry = $countryInput.value.trim();
+  var filterShape = $shapeInput.value.trim();
+
+
+  dataItem={ datetime:filterDate,
+    city:filterCity,
+    state:filterState,
+    country:filterCountry,
+    shape:filterShape,
+  }
+  dataSet.push(dataItem);
+
 }
 
 function createPage(startPage){
@@ -85,6 +105,7 @@ function createPage(startPage){
 
 $searchBtn.addEventListener("click", handleSearchButtonClick);
 $clearBtn.addEventListener("click", handleClearButtonClick);
+$btnadd.addEventListener("click", handleAddButtonClick);
 
 
 // renderTable renders the filteredAddresses to the tbody
