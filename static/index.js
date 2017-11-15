@@ -37,6 +37,8 @@ function handleAddButtonClick() {
     shape:filterShape,
   }
   dataSet.push(dataItem);
+  renderTable(0);
+  createPage(0);
 
 }
 
